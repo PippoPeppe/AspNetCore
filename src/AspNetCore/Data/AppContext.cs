@@ -9,17 +9,13 @@ using System.Configuration;
 
 namespace AspNetCore.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class AppContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public DbSet<Company> Companies { get; set; }
+        public AppContext(DbContextOptions<AppContext> options)
             : base(options)
         {
         }
-
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
-        //}
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
